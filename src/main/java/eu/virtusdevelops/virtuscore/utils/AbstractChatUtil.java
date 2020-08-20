@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+/*
+    NEEDS TO BE FULLY RECODED ITS UGLY EWW.
+ */
+
 public class AbstractChatUtil implements Listener {
 
     private static final List<UUID> registered = new ArrayList<>();
