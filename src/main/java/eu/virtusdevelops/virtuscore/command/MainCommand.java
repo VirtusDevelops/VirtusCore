@@ -100,7 +100,13 @@ public class MainCommand extends AbstractCommand {
             sender.sendMessage(TextUtil.colorFormat("&eCoded by VirtusDevelops :3"));
         }
         if (nestedCommands != null) {
-            List<String> commands = nestedCommands.children.values().stream().distinct().map(c -> c.getCommands().get(0)).collect(Collectors.toList());
+            List<String> commands = nestedCommands
+                    .children
+                    .values()
+                    .stream()
+                    .map(abstractCommand -> abstractCommand.getCommands().get(0))
+                    .collect(Collectors.toList());
+
             if (sortHelp) {
                 Collections.sort(commands);
             }

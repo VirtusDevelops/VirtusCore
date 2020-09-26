@@ -4,6 +4,7 @@ import eu.virtusdevelops.virtuscore.gui.actions.InventoryCloseAction;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,6 +48,15 @@ public class InventoryCreator implements InventoryHolder {
     public void clean(){
         this.icons.clear();
         this.getInventory().clear();
+    }
+
+    public void setBackground(ItemStack itemStack){
+        Icon icon = new Icon(itemStack);
+        for(int x = 0; x < size; x++){
+            if(!icons.containsKey(x)){
+                setIcon(x, icon);
+            }
+        }
     }
 
     public String getTitle() {

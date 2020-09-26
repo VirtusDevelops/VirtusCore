@@ -79,6 +79,9 @@ public class GuiListener implements Listener {
             if (icon == null) return;
 
             event.setCancelled(true);
+            for(DragItemIntoAction action : icon.getDragItemIntoActions()){
+                action.execute(player, event.getCursor());
+            }
             if(event.getClick() == ClickType.LEFT){
                 for(LeftClickAction leftClickAction : icon.getLeftClickActions()){
                     leftClickAction.execute(player);
@@ -99,11 +102,6 @@ public class GuiListener implements Listener {
                     action.execute(player);
                 }
             }
-            for(DragItemIntoAction action : icon.getDragItemIntoActions()){
-                action.execute(player, event.getCursor());
-                event.getCursor().setType(Material.AIR);
-            }
-
             //Execute all the actions
             for (ClickAction clickAction : icon.getClickActions()) {
                 clickAction.execute(player);

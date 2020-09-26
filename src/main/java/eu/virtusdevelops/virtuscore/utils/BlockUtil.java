@@ -25,6 +25,25 @@ public class BlockUtil {
         return blocks;
     }
 
+
+    public static List<Block> getSquare(Block start, int radius, int height){
+        if (radius < 0) {
+            return new ArrayList<>(0);
+        }
+        int iterations = (radius * 2) + 1;
+        int iterations2 = (height * 2) + 1;
+
+        List<Block> blocks = new ArrayList<>(iterations * iterations2 * iterations);
+        for (int x = -radius; x <= radius; x++) {
+            for (int y = -height; y <= height; y++) {
+                for (int z = -radius; z <= radius; z++) {
+                    blocks.add(start.getRelative(x, y, z));
+                }
+            }
+        }
+        return blocks;
+    }
+
     public static List<Block> getFlatSquare(Block start, int radius){
         if (radius < 0) {
             return new ArrayList<>(0);
@@ -55,33 +74,5 @@ public class BlockUtil {
             }
         }
         return blocks;
-    }
-
-    public static Block getLocation(BlockFace face, Block block){
-
-        Location nextLocation = block.getLocation();
-
-        switch (face) {
-            case SOUTH :
-                nextLocation.setZ(nextLocation.getZ() + 1);
-                break;
-            case UP:
-                nextLocation.setY(nextLocation.getY() + 1);
-                break;
-            case DOWN:
-                nextLocation.setY(nextLocation.getY() - 1);
-                break;
-            case EAST:
-                nextLocation.setX(nextLocation.getX() + 1);
-                break;
-            case WEST:
-                nextLocation.setX(nextLocation.getX() - 1);
-                break;
-            case NORTH:
-                nextLocation.setZ(nextLocation.getZ() - 1);
-                break;
-        }
-
-        return block.getWorld().getBlockAt(nextLocation);
     }
 }

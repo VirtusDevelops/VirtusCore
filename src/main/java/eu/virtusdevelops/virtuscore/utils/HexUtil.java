@@ -47,7 +47,6 @@ import java.util.regex.Pattern;
 import java.awt.Color;
 import java.util.Arrays;
 import java.util.stream.Collectors;
-import org.bukkit.command.CommandSender;
 
 public final class HexUtil {
 
@@ -76,6 +75,16 @@ public final class HexUtil {
         String parsed = message;
         parsed = parseRainbow(parsed);
         parsed = parseGradients(parsed);
+        parsed = parseHex(parsed);
+        parsed = parseLegacy(parsed);
+        return parsed;
+    }
+
+    public static String colorify(String message, boolean useGradient){
+        String parsed = message;
+        parsed = parseRainbow(parsed);
+        if(useGradient)
+            parsed = parseGradients(parsed);
         parsed = parseHex(parsed);
         parsed = parseLegacy(parsed);
         return parsed;
@@ -204,13 +213,13 @@ public final class HexUtil {
      * @param hex The hex color
      * @return The closest ChatColor value
      */
-    private static String translateHex(String hex) {
+    public static String translateHex(String hex) {
         if (ServerVersion.isServerVersionAtLeast(ServerVersion.V1_16))
             return ChatColor.of(hex).toString();
         return translateHex(Color.decode(hex));
     }
 
-    private static String translateHex(Color color) {
+    public static String translateHex(Color color) {
         if (ServerVersion.isServerVersionAtLeast(ServerVersion.V1_16))
             return ChatColor.of(color).toString();
 
@@ -305,8 +314,8 @@ public final class HexUtil {
          * @return the next color in the gradient
          */
         public Color next() {
-            // Gradients will use the first color of the entire spectrum won't be available to preserve prettiness
-            if (ServerVersion.isServerVersionAtLeast(ServerVersion.V1_16))
+            // Gradients don't work on older versions.
+            if (!ServerVersion.isServerVersionAtLeast(ServerVersion.V1_16))
                 return this.colors.get(0);
 
             Color color;

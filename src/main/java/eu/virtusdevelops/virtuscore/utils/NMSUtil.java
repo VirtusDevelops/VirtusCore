@@ -64,6 +64,7 @@ public class NMSUtil {
     }
 
     public static void sendPacket(Player player, Object packet) {
+        if (packet == null) return;
         try {
             Object handle = player.getClass().getMethod("getHandle").invoke(player);
             Object playerConnection = handle.getClass().getField("playerConnection").get(handle);
@@ -72,5 +73,6 @@ public class NMSUtil {
             e.printStackTrace();
         }
     }
+
 
 }

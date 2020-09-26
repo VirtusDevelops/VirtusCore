@@ -20,10 +20,10 @@ import static java.io.File.separator;
 
 public class FileManager extends Manager<String, FileConfiguration> {
     private final String directory;
-    private final LinkedHashSet<FileLocation> files;
+    private final Set<FileLocation> files;
 
 
-    public FileManager(JavaPlugin plugin, LinkedHashSet<FileLocation> linkedHashSet) {
+    public FileManager(JavaPlugin plugin, Set<FileLocation> linkedHashSet) {
         super(plugin);
         files = linkedHashSet;
         directory = ServerVersion.isServerVersionAtLeast(ServerVersion.V1_13) ? "master" : "legacy";

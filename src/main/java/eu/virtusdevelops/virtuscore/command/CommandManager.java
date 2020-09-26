@@ -27,7 +27,7 @@ public class CommandManager implements CommandExecutor, TabCompleter {
 
     private final JavaPlugin plugin;
 
-    private final HashMap<String, NestedCommand> commands = new HashMap<>();
+    private final Map<String, NestedCommand> commands = new HashMap<>();
     private String msg_noConsole = ChatColor.RED + "You must be a player to use this command.";
     private String msg_noPerms = ChatColor.RED + "You do not have permission to do that.";
     private String msg_noCommand = ChatColor.GRAY + "The command you entered does not exist or is spelt incorrectly.";

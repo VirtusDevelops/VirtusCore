@@ -1,11 +1,12 @@
 package eu.virtusdevelops.virtuscore.command;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.stream.Stream;
 
 public class NestedCommand {
     final AbstractCommand parent;
-    final LinkedHashMap<String, AbstractCommand> children = new LinkedHashMap();
+    final Map<String, AbstractCommand> children = new LinkedHashMap();
 
 
     protected NestedCommand(AbstractCommand parent) {
