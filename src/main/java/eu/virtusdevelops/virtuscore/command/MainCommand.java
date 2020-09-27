@@ -1,5 +1,5 @@
 package eu.virtusdevelops.virtuscore.command;
-import eu.virtusdevelops.virtuscore.utils.TextUtil;
+import eu.virtusdevelops.virtuscore.utils.TextUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -97,7 +97,7 @@ public class MainCommand extends AbstractCommand {
         if (header != null) {
             sender.sendMessage(header);
         } else {
-            sender.sendMessage(TextUtil.colorFormat("&eCoded by VirtusDevelops :3"));
+            sender.sendMessage(TextUtils.colorFormat("&eCoded by VirtusDevelops :3"));
         }
         if (nestedCommands != null) {
             List<String> commands = nestedCommands

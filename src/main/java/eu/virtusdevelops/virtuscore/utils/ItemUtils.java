@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Base64;
 
-public class ItemUtil {
+public class ItemUtils {
 
     public String encodeItem(ItemStack itemStack) {
         YamlConfiguration yamlConfiguration = new YamlConfiguration();
@@ -21,7 +21,7 @@ public class ItemUtil {
         try {
             yamlConfiguration.loadFromString(new String(Base64.getDecoder().decode(encodedItem)));
         } catch (InvalidConfigurationException e) {
-            Bukkit.getConsoleSender().sendMessage(TextUtil.colorFormat("&cError: " + e));
+            Bukkit.getConsoleSender().sendMessage(TextUtils.colorFormat("&cError: " + e));
             return null;
         }
 

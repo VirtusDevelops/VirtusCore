@@ -3,7 +3,7 @@ package eu.virtusdevelops.virtuscore.utils;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-public class StorageUtil {
+public class StorageUtils {
 
 
     /**

@@ -3,7 +3,7 @@ package eu.virtusdevelops.virtuscore.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListUtil {
+public class ListUtils {
     public static <T> List<List<T>> getBatches(List<T> collection, int batchSize){
         int i = 0;
         List<List<T>> batches = new ArrayList<>();

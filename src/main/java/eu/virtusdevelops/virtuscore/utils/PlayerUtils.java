@@ -6,7 +6,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class PlayerUtil {
+public class PlayerUtils {
     /**
      * Plays the breaking of item animation to player
      * @param player - player to play animation to.
@@ -35,7 +35,7 @@ public class PlayerUtil {
             }
             return  dropped;
         }else{
-            if(StorageUtil.hasSpace(player.getInventory(), itemStack)){
+            if(StorageUtils.hasSpace(player.getInventory(), itemStack)){
                 player.getInventory().addItem(itemStack);
                 return true;
             }else{
@@ -43,4 +43,5 @@ public class PlayerUtil {
             }
         }
     }
+
 }

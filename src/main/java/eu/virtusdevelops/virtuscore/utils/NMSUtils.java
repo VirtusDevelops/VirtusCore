@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
 
-public class NMSUtil {
+public class NMSUtils {
     public static String getServerVersion() {
         String name = Bukkit.getServer().getClass().getPackage().getName();
         return name.substring(name.lastIndexOf('.') + 1) + ".";

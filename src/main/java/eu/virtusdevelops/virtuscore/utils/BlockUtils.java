@@ -8,7 +8,7 @@ import org.bukkit.block.BlockFace;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BlockUtil {
+public class BlockUtils {
     public static List<Block> getSquare(Block start, int radius){
         if (radius < 0) {
             return new ArrayList<>(0);

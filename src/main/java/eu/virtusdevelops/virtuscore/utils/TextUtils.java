@@ -7,7 +7,7 @@ import net.md_5.bungee.api.ChatColor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TextUtil {
+public class TextUtils {
 
     public static String colorFormat(String message){
         return HexUtil.colorify(message);
