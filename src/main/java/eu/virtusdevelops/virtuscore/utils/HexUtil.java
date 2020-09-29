@@ -90,6 +90,29 @@ public final class HexUtil {
         return parsed;
     }
 
+    public static List<String> listOfRainbowFrames(String text, int numberOfColors, float saturation, float brightness){
+        List<String> lines = new ArrayList<>();
+        Rainbow rainbow = new Rainbow(numberOfColors, saturation, brightness);
+        for(int i = 0;i < numberOfColors; i++)
+            lines.add(translateHex(rainbow.next()) + text);
+        return lines;
+    }
+
+    public static String rainbowShifted(String text, int shiftFor, float saturation, float brightness){
+        Rainbow rainbow = new Rainbow(text.length(), saturation, brightness);
+        StringBuilder parsedRainbow = new StringBuilder();
+
+        rainbow.shift(shiftFor);
+
+        for (char c : text.toCharArray())
+            parsedRainbow.append(translateHex(rainbow.next())).append(c);
+
+
+
+
+        return parsedRainbow.toString();
+    }
+
     private static String parseRainbow(String message) {
         String parsed = message;
 
@@ -395,6 +418,14 @@ public final class HexUtil {
             this.hue += this.hueStep;
             return color;
         }
+
+
+        public void shift(int shift){
+            this.hue += hueStep * shift;
+        }
+
+
+
 
     }
 

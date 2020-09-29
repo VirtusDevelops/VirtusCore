@@ -2,13 +2,7 @@ package eu.virtusdevelops.virtuscore.command;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -64,7 +58,7 @@ public class CommandManager implements CommandExecutor, TabCompleter {
 
     public List<String> getSubCommands(String command) {
         NestedCommand nested = command == null ? null : commands.get(command.toLowerCase());
-        return nested == null ? Collections.EMPTY_LIST : nested.children.keySet().stream().collect(Collectors.toList());
+        return nested == null ? Collections.EMPTY_LIST : new ArrayList<>(nested.children.keySet());
     }
 
     public Set<AbstractCommand> getAllCommands() {
