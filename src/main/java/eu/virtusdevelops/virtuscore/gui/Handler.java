@@ -11,6 +11,7 @@ public class Handler {
     private final List<UUID> openedInv = new ArrayList<>();
     private final GuiListener guiListener;
 
+
     public Handler(Plugin plugin){
         this.guiListener = new GuiListener(this, plugin);
         VirtusCore.plugins().registerEvents(guiListener, plugin);
