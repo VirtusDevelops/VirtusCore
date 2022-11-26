@@ -18,6 +18,7 @@ import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
+import javax.swing.*;
 import java.util.*;
 import java.util.function.BiPredicate;
 
@@ -512,6 +513,23 @@ public class ItemUtils {
      */
     public static void give(Player player, Material type, int amount) {
         give(player, new ItemStack(type), amount);
+    }
+
+
+    /**
+     * Creates new item with specific name and lore.
+     * @param mat The item material
+     * @param name The name of the item
+     * @param lore The lore of the time.
+     * @return the item.
+     */
+    public static ItemStack create(Material mat, String name, List<String> lore){
+        ItemStack item = new ItemStack(mat);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(TextUtils.colorFormat(name));
+        meta.setLore(TextUtils.colorFormatList(lore));
+        item.setItemMeta(meta);
+        return item;
     }
 
 

@@ -2,10 +2,12 @@ package eu.virtusdevelops.virtuscore.gui;
 
 import eu.virtusdevelops.virtuscore.gui.actions.InventoryCloseAction;
 import org.bukkit.Bukkit;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,14 +36,20 @@ public class InventoryCreator implements InventoryHolder {
     }
 
     @Override
+    @Nonnull
     public Inventory getInventory() {
         Inventory inventory = Bukkit.createInventory(this, this.size, this.title);
-
-        //You should check for inventory size so you don't get errors
         for (Map.Entry<Integer, Icon> entry : this.icons.entrySet()) {
             inventory.setItem(entry.getKey(), entry.getValue().itemStack);
         }
+        return inventory;
+    }
 
+    public Inventory getInventory(InventoryType type){
+        Inventory inventory = Bukkit.createInventory(this, type, this.title);
+        for (Map.Entry<Integer, Icon> entry : this.icons.entrySet()) {
+            inventory.setItem(entry.getKey(), entry.getValue().itemStack);
+        }
         return inventory;
     }
 

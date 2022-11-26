@@ -1,11 +1,16 @@
 package eu.virtusdevelops.virtuscore.gui;
 
+import eu.virtusdevelops.virtuscore.VirtusCore;
+import eu.virtusdevelops.virtuscore.compatibility.ServerVersion;
 import eu.virtusdevelops.virtuscore.gui.actions.*;
 import eu.virtusdevelops.virtuscore.utils.ItemUtils;
 import eu.virtusdevelops.virtuscore.utils.TextUtils;
+import org.bukkit.DyeColor;
 import org.bukkit.Material;
+import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.MaterialData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -87,8 +92,26 @@ public class Paginator {
                 break;
             }
         }
-
+        fillBackground();
         player.openInventory(inventoryCreator.getInventory());
+    }
+
+    private void fillBackground(){
+        ItemStack stack;
+        if(ServerVersion.isServerVersionAtLeast(ServerVersion.V1_15)){
+            stack = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+        }else{
+            stack = new ItemStack(Material.valueOf("STAINED_GLASS_PANE"), 1, (short) 0);
+        }
+
+        Icon background = new Icon(stack);
+        for(int i = 0; i < size ; i++){
+            if(!slots.contains(i)){
+                if(inventoryCreator.getIcon(i) == null) {
+                    inventoryCreator.setIcon(i, background);
+                }
+            }
+        }
     }
 
 

@@ -102,6 +102,7 @@ public class GuiListener implements Listener {
                 action.execute(player);
             }
         }
+
         if(event.getClick() == ClickType.SHIFT_RIGHT){
             for(ShiftRClickAction action: icon.getShiftRclickActions()){
                 action.execute(player);
