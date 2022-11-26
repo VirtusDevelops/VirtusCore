@@ -92,7 +92,7 @@ public class Paginator {
                 break;
             }
         }
-        fillBackground();
+        fancyBackground();
         player.openInventory(inventoryCreator.getInventory());
     }
 
@@ -113,6 +113,53 @@ public class Paginator {
             }
         }
     }
+
+    private void fancyBackground(){
+        ItemStack stack, stack2;
+        if(ServerVersion.isServerVersionAtLeast(ServerVersion.V1_15)){
+            stack = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+            stack2 = new ItemStack(Material.PURPLE_STAINED_GLASS_PANE);
+        }else{
+            stack = new ItemStack(Material.valueOf(""), 1, (short) 0);
+            stack2 = new ItemStack(Material.valueOf(""), 1, (short) 5);
+        }
+        Icon icon1 = new Icon(stack);
+        Icon icon2 = new Icon(stack2);
+
+
+        // set items in inventory
+        inventoryCreator.setIcon(0, icon2);
+        inventoryCreator.setIcon(1, icon2);
+        inventoryCreator.setIcon(7, icon2);
+        inventoryCreator.setIcon(8, icon2);
+        inventoryCreator.setIcon(9, icon2);
+        inventoryCreator.setIcon(17, icon2);
+
+        int start = 20;
+        if(size < 45){
+            start = 29;
+        }else if(size < 53){
+            start = 38;
+        }else {
+            start = 47;
+        }
+
+        for(int i = start; i < start+5; i++){
+            if(!slots.contains(i)) {
+                inventoryCreator.setIcon(i, icon2);
+            }
+        }
+
+        for(int i = 0; i < size ; i++){
+            if(!slots.contains(i)){
+                if(inventoryCreator.getIcon(i) == null) {
+                    inventoryCreator.setIcon(i, icon1);
+                }
+            }
+        }
+
+    }
+
 
 
     private void nextPageIcon(){
